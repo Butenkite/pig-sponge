@@ -26,30 +26,21 @@ public class Pig {
 
     // Implement your solution here!
     public static String pigLatin(String sentence) {
-            String newString = "";
-    String currentWord = "";
+   String[] wordArray = sentence.split(" ");
+    String newString = "";
 
-    for(int i = 0; i < sentence.length(); i++){
-      String currentLetter = String.valueOf(sentence.charAt(i));
-      if(!currentLetter.equals(" ")){
-        currentWord += sentence.charAt(i);
-      }
-      else{
-        System.out.println("Completed word is: " + currentWord);
-        String firstLetter = String.valueOf(currentLetter.charAt(0));
+    for(String currentWord : wordArray){
+        String firstLetter = String.valueOf(currentWord.charAt(0));
         if(firstLetter.equals("a") || firstLetter.equals("e") || firstLetter.equals("i") || firstLetter.equals("o") || firstLetter.equals("u")){
-          currentWord = currentWord.substring(1) + firstLetter + "ay";
-          System.out.println("it started with a vowel");
+          newString += currentWord + " ";
         }
-        newString += currentWord;
-        System.out.println("Current String is " + newString);
-        currentWord = "";
+        else{
+          newString += currentWord.substring(1) + firstLetter + "ay" + " ";
+        }
       }
-    }
-
+      newString = newString.substring(0, newString.length()-1);
       return newString;
   }
-    }
 
 
 
